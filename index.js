@@ -29,3 +29,19 @@ db.connect((err) => {
     }
     console.log('Connected to the MySQL database.');
 });
+
+
+//membuat methode 
+
+
+// method get
+app.get('/api/users', (req, res) => {
+    db.query('SELECT * FROM mahasiswa', (err, results) => {
+        if (err) {
+            cponsole.error('Error executing query:0', err.stack);
+            res.status(500).send('Error Fetching users');
+            return;
+        }
+        res.json(results);
+    });
+});
